@@ -1,0 +1,116 @@
+{
+  "ignorePatterns": [
+    "node_modules/",
+    "dist/",
+    "coverage/",
+    "jest.config.ts",
+    "commitlint.config.ts",
+    ".eslintrc.js"
+  ],
+  "env": {
+    "es2021": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "plugin:prettier/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript"
+  ],
+  "settings": {
+    "import/resolver": {
+      "typescript": true,
+      "node": true
+    },
+    "import/external-module-folders": [
+      "node_modules"
+    ],
+    "import/internal-regex": "^node_modules/@honestwork/"
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "@typescript-eslint",
+    "spellcheck"
+  ],
+  "rules": {
+    "@typescript-eslint/explicit-member-accessibility": 0,
+    "@typescript-eslint/explicit-function-return-type": 0,
+    "@typescript-eslint/no-parameter-properties": 0,
+    "@typescript-eslint/interface-name-prefix": 0,
+    "@typescript-eslint/explicit-module-boundary-types": 0,
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/no-var-requires": "off",
+    "prefer-arrow-callback": "error",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_"
+      }
+    ],
+    "@typescript-eslint/no-empty-function": [
+      "warn",
+      {
+        "allow": [
+          "constructors"
+        ]
+      }
+    ],
+    "import/no-unresolved": "off",
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "index",
+          "sibling",
+          "parent",
+          "object",
+          "type"
+        ],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          {
+            "group": [
+              "@/../../*"
+            ],
+            "message": "Imports from outside the project are not allowed."
+          }
+        ]
+      }
+    ],
+    "spellcheck/spell-checker": [
+      "warn",
+      {
+        "lang": "en_US",
+        "comments": false,
+        "strings": false,
+        "skipWords": ["tokenize", "ngram"],
+        "skipIfMatch": [
+          "http[s]://[^s]*",
+          "^[-\\w]+\/[-\\w\\.]+$"
+        ],
+        "minLength": 4
+      }
+    ]
+  }
+}
