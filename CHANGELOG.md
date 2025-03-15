@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.2](https://github.com/TobiasDemoor/ngramjs/compare/v0.1.1...v0.1.2) (2025-03-15)
+
+
+### Bug Fixes
+
+* package declarations ([1ebb1cf](https://github.com/TobiasDemoor/ngramjs/commit/1ebb1cfeb348c9ea44a5def77c2b50f3549499c9))
+
 ## 0.1.1 (2025-03-15)
 
 
