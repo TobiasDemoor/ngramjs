@@ -7,8 +7,7 @@
   "author": "Kristijan Sedlak (Xpepermint) & Tobias Demoor",
   "license": "MIT",
   "scripts": {
-    "clean": "rm -Rf ./dist",
-    "build": "npm run clean; tsc",
+    "build": "tsc",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier --write \"src/**/*.{ts,js,json,md}\"",

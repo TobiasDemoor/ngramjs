@@ -1,9 +1,9 @@
-import { ngram, tokenize } from "../src";
+import { ngram, tokenize } from "../index";
 
 describe("Test", () => {
   it("`tokenize` returns list of words", () => {
     expect(tokenize("")).toEqual([]);
-    expect(tokenize(null)).toEqual([]);
+    expect(tokenize(null as unknown as string)).toEqual([]);
 
     expect(tokenize("I like opensource!")).toEqual(["I", "like", "opensource"]);
     expect(tokenize("Anže and špela are tokenized!")).toEqual([

@@ -20,14 +20,11 @@ export interface NgramRecipe {
  * @param str Input string.
  */
 export function tokenize(str: string): string[] {
-  if (typeof str === "string") {
-    return str
-      .replace(/[$-/:-?{-~!"^_`[\]]/g, "")
-      .split(" ")
-      .filter((v) => v);
-  } else {
-    return [];
-  }
+  if (typeof str !== "string") return [];
+  return str
+    .replace(/[$-/:-?{-~!"^_`[\]]/g, "")
+    .split(" ")
+    .filter((v) => v);
 }
 
 /**
@@ -42,12 +39,12 @@ export function ngram(str: string, recipe: NgramRecipe = {}): string[] {
 
   const grams = [];
 
-  const min = recipe.min > 0 ? recipe.min : 0;
+  let min: number = recipe.min || 0;
+  let max: number = recipe.max || str.length;
 
-  let max = recipe.max > recipe.min ? recipe.max : str.length;
-  if (max > str.length) {
-    max = str.length;
-  }
+  if (min < 0) min = 0; // min cannot be negative
+  if (max <= min) max = min; // max cannot be less than min
+  if (max > str.length) max = str.length; // max cannot be greater than string length
 
   if (recipe.style === NgramStyle.START) {
     for (let i = min; i <= max; i++) {
