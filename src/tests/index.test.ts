@@ -1,4 +1,4 @@
-import { ngram, tokenize } from "../index";
+import { ngram, NgramStyle, tokenize } from "../index";
 
 describe("Test", () => {
   it("`tokenize` returns list of words", () => {
@@ -18,14 +18,16 @@ describe("Test", () => {
   it("`ngram` returns list of grams", () => {
     expect(ngram("")).toEqual([]);
 
-    expect(ngram("opensource", { style: 1, min: 3, max: 5 })).toEqual([
-      "ope",
-      "open",
-      "opens",
+    expect(
+      ngram("opensource", { style: NgramStyle.START, min: 3, max: 5 }),
+    ).toEqual(["ope", "open", "opens"]);
+    expect(ngram("foo", { style: NgramStyle.START, min: 3, max: 5 })).toEqual([
+      "foo",
     ]);
-    expect(ngram("foo", { style: 1, min: 3, max: 5 })).toEqual(["foo"]);
 
-    expect(ngram("opensource", { style: 2, min: 3, max: 5 })).toEqual([
+    expect(
+      ngram("opensource", { style: NgramStyle.MIDDLE, min: 3, max: 5 }),
+    ).toEqual([
       "ope",
       "open",
       "opens",
@@ -36,6 +38,8 @@ describe("Test", () => {
       "enso",
       "ensou",
     ]);
-    expect(ngram("foo", { style: 2, min: 3, max: 5 })).toEqual(["foo"]);
+    expect(ngram("foo", { style: NgramStyle.MIDDLE, min: 3, max: 5 })).toEqual([
+      "foo",
+    ]);
   });
 });
