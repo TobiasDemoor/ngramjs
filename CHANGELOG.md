@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [0.1.3](https://github.com/TobiasDemoor/ngramjs/compare/v0.1.2...v0.1.3) (2025-03-15)
+
+
+### Features
+
+* add coverage ([d19284b](https://github.com/TobiasDemoor/ngramjs/commit/d19284b06823054d7ce65b90e2e4b75986a0690a))
+* add ngramSet ([60c1f9b](https://github.com/TobiasDemoor/ngramjs/commit/60c1f9b208a25e446db728fc09b7f4fbfd88a687))
+* remove unnecesary lines ([3bd45cf](https://github.com/TobiasDemoor/ngramjs/commit/3bd45cf62b78c6b0c912ca941bad7dcb5375db3d))
+* update tests to use enum ([f41f2b0](https://github.com/TobiasDemoor/ngramjs/commit/f41f2b032c3e84c495a18c23ddc9c2ba91687da6))
+
+
+### Bug Fixes
+
+* substring range would go outside string length ([b8913be](https://github.com/TobiasDemoor/ngramjs/commit/b8913be56a3315e27aee26b5bb1c073116df048e))
+
 ## [0.1.2](https://github.com/TobiasDemoor/ngramjs/compare/v0.1.1...v0.1.2) (2025-03-15)
 
 
