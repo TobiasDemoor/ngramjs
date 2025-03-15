@@ -2,8 +2,8 @@
   "name": "ngramjs",
   "version": "0.1.1",
   "description": "String ngram splitter.",
-  "main": "./dist/src/index.js",
-  "types": "./dist/src/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "author": "Kristijan Sedlak (Xpepermint) & Tobias Demoor",
   "license": "MIT",
   "scripts": {
