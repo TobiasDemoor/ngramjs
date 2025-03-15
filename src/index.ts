@@ -20,7 +20,7 @@ export interface NgramRecipe {
  * @param str Input string.
  */
 export function tokenize(str: string): string[] {
-  if (typeof str !== "string") return [];
+  if (!str || typeof str !== "string") return [];
   return str
     .replace(/[$-/:-?{-~!"^_`[\]]/g, "")
     .split(" ")
@@ -33,29 +33,29 @@ export function tokenize(str: string): string[] {
  * @param recipe Ngram configuration.
  */
 export function ngram(str: string, recipe: NgramRecipe = {}): string[] {
-  if (!str) {
-    return [];
-  }
+  if (!str || typeof str !== "string") return [];
 
-  const grams = [];
-
-  let min: number = recipe.min || 0;
+  const style: NgramStyle = recipe.style || NgramStyle.MIDDLE;
+  let min: number = recipe.min || 1;
   let max: number = recipe.max || str.length;
 
-  if (min < 0) min = 0; // min cannot be negative
-  if (max <= min) max = min; // max cannot be less than min
-  if (max > str.length) max = str.length; // max cannot be greater than string length
+  if (min <= 0) min = 1; // min cannot be negative or zero
+  if (max < min || max > str.length) max = str.length; // max cannot be less than min and cannot be greater than string length
 
-  if (recipe.style === NgramStyle.START) {
-    for (let i = min; i <= max; i++) {
-      grams.push(str.substring(0, i));
-    }
-  } else {
-    for (let i = 0; i <= max - min; i++) {
-      for (let j = min; j <= max; j++) {
-        grams.push(str.substring(0 + i, j + i));
+  const grams: string[] = [];
+  switch (style) {
+    case NgramStyle.START:
+      for (let i = min; i <= max; i++) {
+        grams.push(str.substring(0, i));
       }
-    }
+      break;
+    case NgramStyle.MIDDLE:
+      for (let i = 0; i <= max - min; i++) {
+        for (let j = min; j <= Math.min(max, str.length - i); j++) {
+          grams.push(str.substring(i, i + j));
+        }
+      }
+      break;
   }
   return grams;
 }
