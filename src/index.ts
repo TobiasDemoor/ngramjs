@@ -59,3 +59,7 @@ export function ngram(str: string, recipe: NgramRecipe = {}): string[] {
   }
   return grams;
 }
+
+export function ngramSet(str: string, recipe: NgramRecipe = {}): Set<string> {
+  return new Set(ngram(str, recipe));
+}

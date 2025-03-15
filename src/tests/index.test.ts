@@ -1,4 +1,4 @@
-import { ngram, NgramStyle, tokenize } from "../index";
+import { ngram, ngramSet, NgramStyle, tokenize } from "../index";
 
 describe("Test", () => {
   describe("tokenize returns list of words", () => {
@@ -79,6 +79,17 @@ describe("Test", () => {
       expect(
         ngram("foo", { style: NgramStyle.MIDDLE, min: 3, max: 5 }),
       ).toEqual(["foo"]);
+    });
+  });
+
+  describe("ngramSet returns set of grams", () => {
+    it("should return empty set", () => {
+      expect(ngramSet("")).toEqual(new Set());
+      expect(ngramSet(null as unknown as string)).toEqual(new Set());
+    });
+
+    it("should return set of grams", () => {
+      expect(ngramSet("foo")).toEqual(new Set(["f", "fo", "foo", "o", "oo"]));
     });
   });
 });
